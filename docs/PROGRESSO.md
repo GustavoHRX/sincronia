@@ -1,6 +1,24 @@
 # SincronIA · Progresso e como continuar
 
-> Última atualização: 30/09/2026
+> Última atualização: 12/10/2026
+
+## Marco atual: M1 · Dados locais e demonstração (próximo)
+
+## M0 · Base (concluído em 12/10/2026)
+
+- [x] Documentação do M0: `CLAUDE.md`, `docs/ESPECIFICACAO.md`, `docs/DECISOES.md`, `docs/TESTES-MANUAIS.md`, este arquivo; `.gitignore` e `README.md` já existiam.
+- [x] (06/10) Android Studio Rabbit 1 e Android SDK (platform 37, emulador `Medium_Phone_API_37.0` com Google Play) instalados.
+- [x] (12/10) Esqueleto criado pelo Gustavo na spec 3.1 (`com.sincronia.app`, minSdk 26, Kotlin DSL).
+- [x] (12/10) Version catalog com versões estáveis (lista em `DECISOES.md`), Hilt + hilt-work com `Configuration.Provider` e o inicializador padrão do WorkManager removido, tema da seção 9 (claro e escuro azul, sem cores dinâmicas), navegação com Hoje / Agenda / Tarefas / Ajustes vazias, `AppLogger` (Logcat + arquivo com rotação) com 3 testes.
+- [x] (12/10) `./gradlew assembleDebug test lint` passou (3 testes; lint só com 2 avisos de versão mais nova: Gradle 9.8.1 e Kotlin 2.4.21, mantidos os do template).
+- [x] (12/10) Teste manual no emulador (API 37): o app abre e navega entre as 4 abas, cada uma com sua descrição. Tema escuro ainda não conferido no aparelho.
+- [ ] Pendência manual: seção 3.2 (Google Cloud), só necessária a partir do M3.
+
+### Como rodar a verificação no terminal
+```bash
+JAVA_HOME=~/Documents/Workspace/android-studio/jbr ./gradlew assembleDebug test lint
+```
+Usa o JDK do Android Studio (o Java do sistema é o 25) e reaproveita o daemon do Gradle.
 
 ## Arquivos do projeto (pasta `guias/`)
 

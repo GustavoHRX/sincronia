@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SincronIA</string>
+
+    <!-- Abas -->
+    <string name="nav_today">Hoje</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_tasks">Tarefas</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Telas vazias (preenchidas nos próximos marcos) -->
+    <string name="today_placeholder">Seus eventos e tarefas de hoje vão aparecer aqui.</string>
+    <string name="agenda_placeholder">A semana e os eventos de cada dia vão aparecer aqui.</string>
+    <string name="tasks_placeholder">Suas listas do Google Tasks vão aparecer aqui.</string>
+    <string name="settings_placeholder">Conta, alarmes e sincronização vão ficar aqui.</string>
+</resources>

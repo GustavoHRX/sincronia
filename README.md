@@ -2,7 +2,7 @@
 
 App Android de agenda que sincroniza com o **Google Agenda** e o **Google Tasks** e tem **alarmes** para eventos e tarefas. Sem versão web: o app conversa direto com as APIs do Google.
 
-> Status: documentação do MVP pronta (spec v2). Código ainda não iniciado.
+> Status: M0 (base do projeto) em andamento. Veja [`docs/PROGRESSO.md`](docs/PROGRESSO.md).
 
 ## O que tem aqui
 

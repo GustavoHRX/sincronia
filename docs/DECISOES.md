@@ -22,3 +22,9 @@ Formato: data · decisão · motivo.
 - **12/10/2026 · Ícones das abas como vetores em `res/drawable`** (Material Icons, Apache 2.0) em vez da biblioteca `material-icons`. Motivo: a biblioteca não está mais no BOM do Compose e seriam 4 ícones.
 - **12/10/2026 · Rotas das abas em texto** (`today`, `agenda`, `tasks`, `settings`) em vez de rotas tipadas com kotlinx.serialization. Motivo: solução mais simples para o M0; dá para migrar quando houver telas com argumentos (editor, M4).
 - **12/10/2026 · `AppLogger` grava em `files/logs/app.log` com rotação em 512 KB** (um backup `app.log.1`, no máximo ~1 MB no aparelho), numa thread própria. Motivo: o "Exportar diagnóstico" (F10) precisa de um arquivo, sem ocupar espaço sem limite.
+
+## M1 · Dados locais e demonstração
+
+- **02/11/2026 · Room 2.8.4, DataStore Preferences 1.1.7, kotlinx.serialization JSON 1.9.0 e Robolectric 4.16.1.** Room usa o plugin `androidx.room`, KSP e schema exportado em `app/schemas/`; eventos e tarefas têm chave composta `(accountId, localId)`, e testes de DAO rodam em banco in-memory com Robolectric. Motivo: versões estáveis compatíveis com o build do M0; separar contas nas chaves e persistir a flag do modo demonstração sem depender do Google.
+- **02/11/2026 · Fontes falsas só são usadas se a flag do DataStore estiver ativa em debug.** O release nunca oferece nem ativa a demonstração; login real, rede, envio do outbox e agendamento de alarmes entram em M3/M4/M5. O worker já percorre a ordem das quatro etapas e grava o download em transação no Room. Motivo: cumprir M1 sem antecipar o login nem simular envio ao Google.
+- **02/11/2026 · Chaves dos itens de demonstração são estáveis e as datas são relativas ao dia local.** A importação substitui os dados sincronizados e marca itens que sumiram como excluídos, mas preserva itens com alterações pendentes no outbox. Motivo: reabrir o app sem duplicar itens e manter o comportamento offline-first.

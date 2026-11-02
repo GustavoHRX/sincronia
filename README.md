@@ -2,7 +2,7 @@
 
 App Android de agenda que sincroniza com o **Google Agenda** e o **Google Tasks** e tem **alarmes** para eventos e tarefas. Sem versão web: o app conversa direto com as APIs do Google.
 
-> Status: M0 (base do projeto) em andamento. Veja [`docs/PROGRESSO.md`](docs/PROGRESSO.md).
+> Status: M1 (dados locais e demonstração) concluído. Próximo: M2 (Hoje). Veja [`docs/PROGRESSO.md`](docs/PROGRESSO.md).
 
 ## O que tem aqui
 
@@ -18,14 +18,10 @@ App Android de agenda que sincroniza com o **Google Agenda** e o **Google Tasks*
 ```bash
 git clone https://github.com/GustavoHRX/sincronia.git
 cd sincronia
-claude
+JAVA_HOME=~/Documents/Workspace/android-studio/jbr ./gradlew assembleDebug test lint
 ```
 
-Aí é só dizer ao Claude Code:
-
-```
-Leia docs/integracao-google-agenda-tasks.md e comece pelo Marco M0
-```
+No build debug, instale o app e toque em **Entrar em modo demonstração**. Agenda e Tarefas mostram dados locais; a conexão com o Google entra no M3. Veja [`docs/TESTES-MANUAIS.md`](docs/TESTES-MANUAIS.md).
 
 ## Segurança
 

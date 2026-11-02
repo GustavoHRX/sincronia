@@ -9,7 +9,32 @@
 
     <!-- Telas vazias (preenchidas nos próximos marcos) -->
     <string name="today_placeholder">Seus eventos e tarefas de hoje vão aparecer aqui.</string>
-    <string name="agenda_placeholder">A semana e os eventos de cada dia vão aparecer aqui.</string>
-    <string name="tasks_placeholder">Suas listas do Google Tasks vão aparecer aqui.</string>
     <string name="settings_placeholder">Conta, alarmes e sincronização vão ficar aqui.</string>
+    <string name="welcome_message">Organize seus eventos e tarefas em um só lugar.</string>
+    <string name="demo_enter">Entrar em modo demonstração</string>
+    <string name="google_login">Entrar com Google</string>
+    <string name="google_unavailable">O login com Google será habilitado no M3. Depois, será necessário configurar o GOOGLE_WEB_CLIENT_ID (especificação, seção 3.2).</string>
+    <string name="agenda_previous_week">Semana anterior</string>
+    <string name="agenda_next_week">Próxima semana</string>
+    <string name="previous_arrow">‹</string>
+    <string name="next_arrow">›</string>
+    <string name="agenda_empty">Sem eventos ou tarefas neste dia.</string>
+    <string name="tasks_empty">Nenhuma tarefa nesta lista.</string>
+    <string name="tasks_completed">Concluídas</string>
+    <string name="all_day">Dia inteiro</string>
+    <string name="task_no_time">Sem hora definida</string>
+    <string name="recurring_read_only">Evento recorrente</string>
+    <string name="loading">Carregando…</string>
+    <string name="demo_meeting">Reunião de planejamento</string>
+    <string name="demo_dinner">Jantar com amigos</string>
+    <string name="demo_all_day">Dia de estudos</string>
+    <string name="demo_overnight">Viagem noturna</string>
+    <string name="demo_recurring">Revisão semanal</string>
+    <string name="demo_personal">Pessoal</string>
+    <string name="demo_work">Trabalho</string>
+    <string name="demo_shopping">Comprar mantimentos</string>
+    <string name="demo_milk">Comprar leite</string>
+    <string name="demo_late">Pagar conta atrasada</string>
+    <string name="demo_complete">Organizar documentos</string>
+    <string name="demo_report">Entregar relatório</string>
 </resources>

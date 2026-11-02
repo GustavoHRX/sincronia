@@ -1,8 +1,17 @@
 # SincronIA · Progresso e como continuar
 
-> Última atualização: 12/10/2026
+> Última atualização: 02/11/2026
 
-## Marco atual: M1 · Dados locais e demonstração (próximo)
+## Marco atual: M2 · Hoje (próximo)
+
+## M1 · Dados locais e demonstração (02/11/2026)
+
+- [x] Room 2.x: seis entidades, DAOs, conversores JSON, índices por conta e schema v1 exportado em `app/schemas/`.
+- [x] Fontes falsas de Agenda e Tasks com itens relativos a hoje, incluindo evento recorrente, dia inteiro, passagem de madrugada, duas listas e subtarefa. Flag debug no DataStore com `accountId = "demo"`.
+- [x] Worker de sync com autorização de demo dispensada, outbox e alarmes ainda sem efeito e importação transacional no Room; repositórios, ViewModels com `StateFlow<UiState>` e telas Agenda/Tarefas.
+- [x] `assembleDebug test lint` passou; testes dos DAOs passaram. Lint só relata avisos de versões mais recentes; versões estáveis usadas por decisão registrada em `DECISOES.md`.
+- [x] No emulador API 37, capturas e hierarquia da UI confirmaram os exemplos em Agenda e Tarefas, a troca de lista e semana, e a persistência ao reabrir.
+- [ ] Pendência manual: conferir tema escuro e o funcionamento offline no emulador ou celular; Google Cloud somente para M3.
 
 ## M0 · Base (concluído em 12/10/2026)
 
@@ -20,7 +29,7 @@ JAVA_HOME=~/Documents/Workspace/android-studio/jbr ./gradlew assembleDebug test 
 ```
 Usa o JDK do Android Studio (o Java do sistema é o 25) e reaproveita o daemon do Gradle.
 
-## Arquivos do projeto (pasta `guias/`)
+## Arquivos do projeto (pasta `docs/`)
 
 | Arquivo | O que é | Status |
 |---|---|---|
@@ -69,11 +78,11 @@ Usa o JDK do Android Studio (o Java do sistema é o 25) e reaproveita o daemon d
 - Frame nomeado como "Android Compact (412 × 917)", sem emoji na interface.
 
 ## Próximos passos
-1. [ ] **Gustavo**: seção 3.1 da especificação (Android Studio e o projeto esqueleto `com.sincronia.app`).
+1. [x] **Gustavo**: seção 3.1 da especificação (Android Studio e o projeto esqueleto `com.sincronia.app`), feita em 12/10.
 2. [ ] **Gustavo**: seção 3.2 (Google Cloud), incluindo o **cliente Web** e o `GOOGLE_WEB_CLIENT_ID` no `local.properties`. Pode ser feito em paralelo: o Claude Code começa sem isso, no modo demonstração.
-3. [ ] Copiar `integracao-google-agenda-tasks.md` para a pasta do projeto e dizer ao Claude Code do terminal: `Leia integracao-google-agenda-tasks.md e comece pelo Marco M0.`
+3. [x] Especificação copiada para `docs/` e M0/M1 concluídos. Próximo: M2, tela Hoje.
 4. [ ] Figma: colar o Prompt 1, depois o 2 e o 3 de `prompt-figma.md`.
 5. [ ] Depois do MVP: alarmes em Direct Boot, backend com `syncToken`/push, verificação do app no Google e publicação no Play.
 
 ## Para retomar (copie e cole na thread)
-> Claude, continue o SincronIA a partir de `guias/PROGRESSO.md`.
+> Continue o SincronIA a partir de `docs/PROGRESSO.md`, começando pelo M2.

@@ -2,7 +2,7 @@
 
 App Android de agenda que sincroniza com o **Google Agenda** e o **Google Tasks** e tem **alarmes** para eventos e tarefas. Sem versão web: o app conversa direto com as APIs do Google.
 
-> Status: M1 (dados locais e demonstração) concluído. Próximo: M2 (Hoje). Veja [`docs/PROGRESSO.md`](docs/PROGRESSO.md).
+> Status: M2 (tela Hoje) concluído. Próximo: M3 (login e leitura do Google). Veja [`docs/PROGRESSO.md`](docs/PROGRESSO.md).
 
 ## O que tem aqui
 

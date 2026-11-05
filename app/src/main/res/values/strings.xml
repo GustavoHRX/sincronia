@@ -8,7 +8,6 @@
     <string name="nav_settings">Ajustes</string>
 
     <!-- Telas vazias (preenchidas nos próximos marcos) -->
-    <string name="today_placeholder">Seus eventos e tarefas de hoje vão aparecer aqui.</string>
     <string name="settings_placeholder">Conta, alarmes e sincronização vão ficar aqui.</string>
     <string name="welcome_message">Organize seus eventos e tarefas em um só lugar.</string>
     <string name="demo_enter">Entrar em modo demonstração</string>
@@ -25,11 +24,31 @@
     <string name="task_no_time">Sem hora definida</string>
     <string name="recurring_read_only">Evento recorrente</string>
     <string name="loading">Carregando…</string>
+    <string name="all_day_until">Dia inteiro, até %1$s</string>
+    <string name="time_range">%1$s – %2$s</string>
+    <string name="time_yesterday">ontem, %1$s</string>
+    <string name="time_tomorrow">amanhã, %1$s</string>
+
+    <!-- Hoje -->
+    <string name="greeting_morning">Bom dia</string>
+    <string name="greeting_afternoon">Boa tarde</string>
+    <string name="greeting_evening">Boa noite</string>
+    <string name="greeting_with_name">%1$s, %2$s</string>
+    <string name="today_empty">Nada para hoje. Puxe a tela para baixo para atualizar.</string>
+    <string name="today_overdue">Atrasadas</string>
+    <string name="today_overdue_yesterday">Venceu ontem</string>
+    <string name="today_overdue_since">Venceu em %1$s</string>
+    <string name="today_timeline">Linha do tempo</string>
+    <string name="today_now">Agora %1$s</string>
+    <string name="today_now_description">Agora, %1$s</string>
+    <string name="today_completed">Concluídas hoje</string>
+    <string name="today_completed_label">Concluída</string>
     <string name="demo_meeting">Reunião de planejamento</string>
     <string name="demo_dinner">Jantar com amigos</string>
     <string name="demo_all_day">Dia de estudos</string>
     <string name="demo_overnight">Viagem noturna</string>
     <string name="demo_recurring">Revisão semanal</string>
+    <string name="demo_exams">Semana de provas</string>
     <string name="demo_personal">Pessoal</string>
     <string name="demo_work">Trabalho</string>
     <string name="demo_shopping">Comprar mantimentos</string>

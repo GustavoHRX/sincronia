@@ -23,6 +23,8 @@ class FakeCalendarSource(@param:ApplicationContext private val context: Context)
                 endAt = at(today.plusDays(2), LocalTime.of(21, 0))),
             EventEntity("demo-all-day", "demo", "demo-all-day", title = context.getString(R.string.demo_all_day),
                 allDay = true, startDate = today, endDate = today.plusDays(1)),
+            EventEntity("demo-exams", "demo", "demo-exams", title = context.getString(R.string.demo_exams),
+                allDay = true, startDate = today.minusDays(1), endDate = today.plusDays(2)),
             EventEntity("demo-overnight", "demo", "demo-overnight", title = context.getString(R.string.demo_overnight),
                 startAt = at(today.minusDays(1), LocalTime.of(22, 0)),
                 endAt = at(today, LocalTime.of(1, 0))),

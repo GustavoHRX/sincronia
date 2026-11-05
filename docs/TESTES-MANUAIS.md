@@ -35,3 +35,23 @@ JAVA_HOME=~/Documents/Workspace/android-studio/jbr ./gradlew installDebug
 - [ ] Em uma instalação de release, o botão de demonstração não aparece. A configuração do Google Cloud fica para M3.
 
 Os itens marcados foram verificados no emulador API 37 em 02/11/2026 por captura de tela e hierarquia da UI. As demais verificações manuais ficam para o Gustavo.
+
+## M2 · Hoje
+
+No Mjolnir, com o emulador `Medium_Phone_API_37.0` ou um celular conectado, já no modo demonstração:
+
+```bash
+JAVA_HOME=~/Documents/Workspace/android-studio/jbr ./gradlew installDebug
+~/Android/Sdk/platform-tools/adb shell am start -n com.sincronia.app/.MainActivity
+```
+
+- [x] A aba **Hoje** abre primeiro, com "Bom dia", "Boa tarde" ou "Boa noite" (sem nome no modo demonstração) e a data de hoje.
+- [x] **Atrasadas** mostra "Pagar conta atrasada" com "Venceu ontem".
+- [x] **Dia inteiro** mostra "Semana de provas" (com "até" o dia de amanhã), "Dia de estudos", "Comprar mantimentos" e "Comprar leite", estas duas com "Sem hora definida".
+- [x] **Linha do tempo** começa com "Viagem noturna" ("ontem, 22:00 – 01:00"), depois "Reunião de planejamento" (10:00 – 11:00), com a linha azul "Agora HH:mm" no lugar do horário atual.
+- [x] **Concluídas hoje** mostra "Organizar documentos" riscada e marcada.
+- [ ] Puxar a tela para baixo mostra o indicador de atualização, que some sozinho; os itens não duplicam.
+- [ ] Deixar o app aberto até virar o minuto: o horário da linha "agora" muda junto com o relógio do celular.
+- [x] Na **Agenda**, os cartões têm o mesmo formato da Hoje; "Semana de provas" aparece de ontem até amanhã.
+
+Os itens marcados foram verificados no emulador API 37 em 05/11/2026 por captura de tela e hierarquia da UI. Puxar para atualizar rodou sem duplicar itens, mas o indicador não foi visto, porque a sync da demonstração dura menos de 1 s.

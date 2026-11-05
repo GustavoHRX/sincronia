@@ -70,6 +70,34 @@ class AppDatabaseTest {
         assertEquals(1, db.taskListDao().observeAll("demo").first().size)
     }
 
+    @Test fun `today queries find overdue, completed today and multi-day all-day events`() = runBlocking {
+        db.taskDao().upsert(listOf(
+            TaskEntity("late", "demo", "late", "personal", title = "Late", dueDate = day.minusDays(2)),
+            TaskEntity("today", "demo", "today", "personal", title = "Today", dueDate = day),
+            TaskEntity("no-date", "demo", "no-date", "personal", title = "No date"),
+            TaskEntity("late-done", "demo", "late-done", "personal", title = "Late done", dueDate = day.minusDays(1),
+                status = "completed", completedAt = start.plusSeconds(60)),
+            TaskEntity("done-yesterday", "demo", "done-yesterday", "personal", title = "Done yesterday",
+                dueDate = day.minusDays(1), status = "completed", completedAt = start.minusSeconds(60)),
+            TaskEntity("done-hidden", "demo", "done-hidden", "personal", title = "Hidden", dueDate = day,
+                status = "completed", completedAt = start.plusSeconds(120), hidden = true),
+            TaskEntity("late-deleted", "demo", "late-deleted", "personal", title = "Deleted",
+                dueDate = day.minusDays(1), deleted = true),
+            TaskEntity("late-other", "other", "late-other", "personal", title = "Other", dueDate = day.minusDays(1)),
+        ))
+        assertEquals(listOf("late"), db.taskDao().observeOverdue("demo", day).first().map { it.localId })
+        assertEquals(listOf("late-done"), db.taskDao().observeCompletedBetween("demo", start, end).first()
+            .map { it.localId })
+
+        db.eventDao().upsert(listOf(EventEntity("trip", "demo", "trip", title = "Trip", allDay = true,
+            startDate = day.minusDays(1), endDate = day.plusDays(2))))
+        val nextDay = day.plusDays(2)
+        assertEquals(listOf("trip"), db.eventDao().observeDay("demo", day, start, end).first().map { it.localId })
+        assertEquals(emptyList<String>(), db.eventDao().observeDay("demo", nextDay,
+            nextDay.atStartOfDay(ZoneId.of("America/Sao_Paulo")).toInstant(),
+            nextDay.plusDays(1).atStartOfDay(ZoneId.of("America/Sao_Paulo")).toInstant()).first().map { it.localId })
+    }
+
     @Test fun `json lists and alarm outbox metadata persist`() = runBlocking {
         val event = EventEntity("id", "demo", "id", title = "Test", reminderMinutes = listOf(5, 10),
             startAt = Instant.parse("2026-09-29T12:00:00Z"), endAt = Instant.parse("2026-09-29T13:00:00Z"))

@@ -1,8 +1,19 @@
 # SincronIA · Progresso e como continuar
 
-> Última atualização: 02/11/2026
+> Última atualização: 05/11/2026
 
-## Marco atual: M2 · Hoje (próximo)
+## Marco atual: M3 · Login e leitura do Google (próximo)
+
+## M2 · Hoje (05/11/2026)
+
+- [x] Tela Hoje conforme o F4: saudação pelo horário (sem nome no modo demonstração), data, **Atrasadas**, **Dia inteiro** (eventos de um ou vários dias e todas as tarefas de hoje, já que a hora chega no M5), **Linha do tempo** (eventos com hora, inclusive o que começou ontem, com a linha "agora" na virada de cada minuto) e **Concluídas hoje**, riscadas.
+- [x] Puxar para atualizar com `PullToRefreshBox`, rodando o mesmo pipeline do `SyncWorker`.
+- [x] Consultas novas no `TaskDao` (atrasadas e concluídas no dia), regras no `TodayPlanner` puro e `TodayViewModel` com `StateFlow<TodayUiState>`. Cartões de evento e tarefa compartilhados com a Agenda.
+- [x] Demonstração com "Semana de provas", evento de dia inteiro de ontem até amanhã.
+- [x] `assembleDebug test lint` passou: 11 testes (4 do banco, 4 do `TodayPlanner`, 3 do logger); lint só com avisos de versões mais novas.
+- [x] No emulador API 37 (05/11, 20h24): capturas confirmaram todas as seções, "Boa noite", "ontem, 22:00 – 01:00", "Agora 20:26" e a tarefa concluída riscada; puxar para atualizar não duplicou itens; a Agenda usa os mesmos cartões.
+- [ ] Pendência manual: ver o indicador de puxar para atualizar (a sync da demonstração dura menos de 1 s), a linha "agora" mudando na virada do minuto e o tema escuro.
+- [ ] Antes do M3: gravar `Instant` em milissegundos no Room (limitação registrada em `DECISOES.md`).
 
 ## M1 · Dados locais e demonstração (02/11/2026)
 
@@ -11,7 +22,7 @@
 - [x] Worker de sync com autorização de demo dispensada, outbox e alarmes ainda sem efeito e importação transacional no Room; repositórios, ViewModels com `StateFlow<UiState>` e telas Agenda/Tarefas.
 - [x] `assembleDebug test lint` passou; testes dos DAOs passaram. Lint só relata avisos de versões mais recentes; versões estáveis usadas por decisão registrada em `DECISOES.md`.
 - [x] No emulador API 37, capturas e hierarquia da UI confirmaram os exemplos em Agenda e Tarefas, a troca de lista e semana, e a persistência ao reabrir.
-- [ ] Pendência manual: conferir tema escuro e o funcionamento offline no emulador ou celular; Google Cloud somente para M3.
+- [ ] Pendência manual: conferir tema escuro e o funcionamento offline no emulador ou celular. Google Cloud configurado em 05/11.
 
 ## M0 · Base (concluído em 12/10/2026)
 
@@ -21,7 +32,7 @@
 - [x] (12/10) Version catalog com versões estáveis (lista em `DECISOES.md`), Hilt + hilt-work com `Configuration.Provider` e o inicializador padrão do WorkManager removido, tema da seção 9 (claro e escuro azul, sem cores dinâmicas), navegação com Hoje / Agenda / Tarefas / Ajustes vazias, `AppLogger` (Logcat + arquivo com rotação) com 3 testes.
 - [x] (12/10) `./gradlew assembleDebug test lint` passou (3 testes; lint só com 2 avisos de versão mais nova: Gradle 9.8.1 e Kotlin 2.4.21, mantidos os do template).
 - [x] (12/10) Teste manual no emulador (API 37): o app abre e navega entre as 4 abas, cada uma com sua descrição. Tema escuro ainda não conferido no aparelho.
-- [ ] Pendência manual: seção 3.2 (Google Cloud), só necessária a partir do M3.
+- [x] Pendência manual: seção 3.2 (Google Cloud), feita pelo Gustavo em 05/11.
 
 ### Como rodar a verificação no terminal
 ```bash
@@ -79,10 +90,10 @@ Usa o JDK do Android Studio (o Java do sistema é o 25) e reaproveita o daemon d
 
 ## Próximos passos
 1. [x] **Gustavo**: seção 3.1 da especificação (Android Studio e o projeto esqueleto `com.sincronia.app`), feita em 12/10.
-2. [ ] **Gustavo**: seção 3.2 (Google Cloud), incluindo o **cliente Web** e o `GOOGLE_WEB_CLIENT_ID` no `local.properties`. Pode ser feito em paralelo: o Claude Code começa sem isso, no modo demonstração.
-3. [x] Especificação copiada para `docs/` e M0/M1 concluídos. Próximo: M2, tela Hoje.
+2. [x] **Gustavo** (05/11): seção 3.2 (Google Cloud) feita no projeto `SincronIA`: Calendar API e Tasks API ativadas, branding, público Externo com o Gmail em usuários de teste, os 2 escopos, cliente Android (`com.sincronia.app` + SHA-1 de debug do Mjolnir `A6:4D:1D:…:07:D7`) e cliente Web, com o `GOOGLE_WEB_CLIENT_ID` no `local.properties` (fora do git). Faltam o cliente Android com o SHA-1 da keystore de release (no M7) e publicar o app como "Em produção" para o uso diário (no modo Teste, a autorização expira a cada 7 dias). Compilar em outro computador exige outro cliente Android com o SHA-1 da chave de debug de lá.
+3. [x] Especificação copiada para `docs/` e M0, M1 e M2 concluídos. Próximo: M3, login e leitura do Google.
 4. [ ] Figma: colar o Prompt 1, depois o 2 e o 3 de `prompt-figma.md`.
 5. [ ] Depois do MVP: alarmes em Direct Boot, backend com `syncToken`/push, verificação do app no Google e publicação no Play.
 
 ## Para retomar (copie e cole na thread)
-> Continue o SincronIA a partir de `docs/PROGRESSO.md`, começando pelo M2.
+> Continue o SincronIA a partir de `docs/PROGRESSO.md`, começando pelo M3.

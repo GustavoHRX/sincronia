@@ -29,6 +29,10 @@ interface TaskDao {
     fun observeDay(accountId: String, day: LocalDate): Flow<List<TaskEntity>>
     @Query("SELECT * FROM tasks WHERE accountId = :accountId AND deleted = 0 AND status != 'completed' AND dueDate >= :start AND dueDate < :end")
     fun observeRange(accountId: String, start: LocalDate, end: LocalDate): Flow<List<TaskEntity>>
+    @Query("SELECT * FROM tasks WHERE accountId = :accountId AND deleted = 0 AND status != 'completed' AND dueDate < :today ORDER BY dueDate, position, title")
+    fun observeOverdue(accountId: String, today: LocalDate): Flow<List<TaskEntity>>
+    @Query("SELECT * FROM tasks WHERE accountId = :accountId AND deleted = 0 AND hidden = 0 AND status = 'completed' AND completedAt >= :start AND completedAt < :end ORDER BY completedAt DESC, title")
+    fun observeCompletedBetween(accountId: String, start: Instant, end: Instant): Flow<List<TaskEntity>>
     @Query("SELECT * FROM tasks WHERE accountId = :accountId AND deleted = 0 AND taskListId = :listId AND (status != 'completed' OR completedAt >= :completedSince) ORDER BY status, position, title")
     fun observeList(accountId: String, listId: String, completedSince: Instant): Flow<List<TaskEntity>>
     @Query("SELECT * FROM tasks WHERE accountId = :accountId AND googleId = :googleId LIMIT 1")

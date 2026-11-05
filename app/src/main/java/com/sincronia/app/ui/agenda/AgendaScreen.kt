@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -31,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.sincronia.app.R
 import com.sincronia.app.core.database.EventEntity
+import com.sincronia.app.ui.components.EventCard
+import com.sincronia.app.ui.components.TaskCard
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.ZoneId
@@ -89,16 +89,7 @@ fun AgendaScreen(viewModel: AgendaViewModel = hiltViewModel()) {
         else LazyColumn(Modifier.fillMaxSize()) {
             items(state.events, key = { it.localId }) { event -> EventCard(event, state.selected) }
             items(state.tasks, key = { it.localId }) { task ->
-                Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer)) {
-                    Row {
-                        Checkbox(checked = false, onCheckedChange = null, enabled = false)
-                        Column {
-                            Text(task.title, Modifier.padding(top = 12.dp), style = MaterialTheme.typography.titleMedium)
-                            Text(stringResource(R.string.task_no_time), Modifier.padding(bottom = 12.dp))
-                        }
-                    }
-                }
+                TaskCard(task.title, stringResource(R.string.task_no_time))
             }
         }
     }
@@ -110,19 +101,4 @@ private fun EventEntity.covers(date: LocalDate): Boolean = if (allDay) {
     val start = date.atStartOfDay(ZoneId.systemDefault()).toInstant()
     val end = date.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant()
     startAt != null && endAt != null && startAt < end && endAt > start
-}
-
-@Composable
-private fun EventCard(event: EventEntity, selected: LocalDate) {
-    Card(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
-        Text(event.title, Modifier.padding(start = 12.dp, top = 12.dp, end = 12.dp),
-            style = MaterialTheme.typography.titleMedium)
-        val localStart = event.startAt?.atZone(ZoneId.systemDefault())
-        val time = if (event.allDay) stringResource(R.string.all_day)
-            else if (localStart?.toLocalDate() != selected) localStart?.format(DateTimeFormatter.ofPattern("d/M HH:mm")) ?: ""
-            else localStart?.format(DateTimeFormatter.ofPattern("HH:mm")).orEmpty()
-        Text(time, Modifier.padding(start = 12.dp, bottom = 12.dp))
-        if (event.recurringEventId != null) Text(stringResource(R.string.recurring_read_only), Modifier.padding(start = 12.dp, bottom = 12.dp))
-    }
 }

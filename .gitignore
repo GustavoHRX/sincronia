@@ -1,0 +1,35 @@
+# Gradle / build
+.gradle/
+build/
+*/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+output-metadata.json
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.navigation/
+.kotlin/
+
+# Arquivos locais e segredos (NUNCA comitar)
+local.properties
+key.properties
+keystore.properties
+*.jks
+*.keystore
+google-services.json
+client_secret*.json
+.env
+.env.*
+secrets.properties
+
+# Logs e SO
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SincronIA" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- M7: splash (core-splashscreen) on the brand blue with the launcher bell-calendar; then the app theme. -->
+    <style name="Theme.SincronIA.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#1565C0</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.SincronIA</item>
+    </style>
+</resources>
